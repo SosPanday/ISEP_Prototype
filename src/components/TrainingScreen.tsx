@@ -96,7 +96,6 @@ const TrainingsScreen: React.FC = () => {
   }, [phase, pauseRemaining]);
 
   const currentExercise = exercises[activeExerciseIndex];
-  const isLastSet = currentExercise?.completedSets + 1 >= currentExercise?.sets;
 
   const handleAdjustWeight = (delta: number) => {
     const updated = [...exercises];
@@ -117,11 +116,11 @@ const TrainingsScreen: React.FC = () => {
       setPhase("rest");
     } else {
       if (activeExerciseIndex + 1 < exercises.length) {
-        setActiveExerciseIndex((prev) => prev + 1);
+        setActiveExerciseIndex((prev) => prev);
         setPauseRemaining(30); // Inter-Exercise Pause
         setPhase("inter-exercise");
         setTimeout(() => {
-          exerciseRefs.current[activeExerciseIndex + 1]?.scrollIntoView({
+          exerciseRefs.current[activeExerciseIndex]?.scrollIntoView({
             behavior: "smooth",
             block: "center",
           });
@@ -172,7 +171,7 @@ const TrainingsScreen: React.FC = () => {
           Fortschritt: {completedSets}/{totalSets} Sets
         </p>
       </div>
-      {exercises.map((exercise, index) => (
+      {activeExercises.map((exercise, index) => (
         <ExerciseCard
           key={exercise.id}
           ref={(el) => (exerciseRefs.current[index] = el)}

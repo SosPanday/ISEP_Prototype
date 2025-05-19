@@ -15,6 +15,8 @@ const initialExercises: Exercise[] = [
     completedSets: 0,
     pause: 60,
     restTime: 5,
+    avgRepTime: 0,
+    reps: 0,
   },
   {
     id: uuidv4(),
@@ -24,6 +26,8 @@ const initialExercises: Exercise[] = [
     completedSets: 0,
     pause: 90,
     restTime: 5,
+    avgRepTime: 0,
+    reps: 0,
   },
   {
     id: uuidv4(),
@@ -33,6 +37,8 @@ const initialExercises: Exercise[] = [
     completedSets: 0,
     pause: 75,
     restTime: 5,
+    avgRepTime: 0,
+    reps: 0,
   },
   {
     id: uuidv4(),
@@ -42,6 +48,8 @@ const initialExercises: Exercise[] = [
     completedSets: 0,
     pause: 75,
     restTime: 5,
+    avgRepTime: 0,
+    reps: 0,
   },
   {
     id: uuidv4(),
@@ -51,6 +59,8 @@ const initialExercises: Exercise[] = [
     completedSets: 0,
     pause: 75,
     restTime: 5,
+    avgRepTime: 0,
+    reps: 0,
   },
 ];
 
@@ -180,9 +190,20 @@ export default function App() {
         onAdjustWeight={adjustWeight}
         onCompleteSet={completeSet}
         disabled={isPaused}
+        onDeferExercise={function (): void {
+          throw new Error("Function not implemented.");
+        }}
       />
 
-      {isPaused && <PauseOverlay remaining={pauseTime} onSkip={skipPause} />}
+      {isPaused && (
+        <PauseOverlay
+          remaining={pauseTime}
+          onSkip={skipPause}
+          average={0}
+          isInterExercise={false}
+          estimatedRemaining={""}
+        />
+      )}
     </div>
   );
 }

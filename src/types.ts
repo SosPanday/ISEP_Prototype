@@ -1,5 +1,6 @@
 // src/types.ts
 export interface Exercise {
+  pause: number;
   id: string;
   name: string;
   weight: number;
@@ -9,6 +10,17 @@ export interface Exercise {
   avgRepTime: number; // average time per rep in seconds
   reps: number;
 }
+
+export type ExerciseList = {
+  id: string;
+  name: string;
+  muscleGroup: string;
+  image?: string;
+  sets: number;
+  reps: number;
+  weight: number;
+  restTime: number; // in seconds
+};
 
 export type AppPhase = "exercise" | "rest" | "inter-exercise";
 
