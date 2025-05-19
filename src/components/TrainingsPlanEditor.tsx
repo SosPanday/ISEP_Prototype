@@ -227,10 +227,17 @@ function SortableExerciseCard({
       className="border rounded-xl p-4 bg-white shadow flex flex-col gap-4 relative group"
     >
       <div className="flex items-center justify-between">
-        <div>
-          <div className="font-semibold text-lg">{exercise.name}</div>
-          <div className="text-sm text-gray-500">
-            Pause: <span className="font-medium">{exercise.restTime}s</span>
+        <div className="flex flex-row gap-2">
+          <img
+            src={`${exercise.image}`}
+            alt={`${exercise.name}`}
+            className="w-12 h-12 aspect-square"
+          />
+          <div>
+            <div className="font-semibold text-lg">{exercise.name}</div>
+            <div className="text-sm text-gray-500">
+              Pause: <span className="font-medium">{exercise.restTime}s</span>
+            </div>
           </div>
         </div>
         <button
@@ -279,9 +286,7 @@ function SortableExerciseCard({
         </div>
       </div>
 
-      <div className="absolute top-2 right-3 text-[10px] text-red-400 opacity-0 group-hover:opacity-100 transition-opacity">
-        Nach links wischen zum Entfernen
-      </div>
+      {/* Nach links wischen zum Entfernen */}
     </div>
   );
 }

@@ -60,7 +60,11 @@ export default function ExercisePickerModal({
               }}
               className="border p-2 rounded cursor-pointer"
             >
-              <img src={`${ex.image}`} alt={`${ex.name}`} />
+              <img
+                src={`${ex.image}`}
+                alt={`${ex.name}`}
+                className="rounded-sm"
+              />
               <div className="font-medium">{ex.name}</div>
               <div className="text-sm text-gray-500">{ex.muscleGroup}</div>
             </div>
